@@ -15,6 +15,9 @@
         <section class="littleblock">
         Correo: <?= $usuario->correo?>
         </section>
+        <?php if($this->session->userdata('admin') && $this->session->userdata('usuario') != $usuario->usuario): ?>
+        <a class="icon" href="<?=base_url().'index.php/un_usuario/borrar_usuario/'.$usuario->usuario?>">🗑️</a>
+        <?php endif ?>
         </div>
         <br>
         <div class="bigblock">
@@ -28,7 +31,7 @@
                     </div>
                 </th>
                 <th>   
-                    <p class="littleblock">Titulo: <a href="<?= base_url().'index.php/un_post/arti/',$fila->id.'/'.$fila->imagen.'/'.$fila->opinion.'/'.$fila->titulo.'/'.$fila->id_usuario?>" title="Ver Post"><?= $fila->titulo; ?></a></p>
+                    <p class="littleblock">Titulo: <a href="<?= base_url().'index.php/un_post/pst/',$fila->id?>" title="Ver Post"><?= $fila->titulo; ?></a></p>
                 </th>
             </tr>
         </table>

@@ -60,4 +60,9 @@ class Usuarios_model extends CI_Model
 			return false;
 		}
 	}
+
+	public function delete_usuario($usuario)
+	{
+		$this->db->delete('usuarios',array('usuario'=>$usuario));
+	}
 }

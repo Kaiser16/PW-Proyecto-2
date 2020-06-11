@@ -18,6 +18,10 @@
 			<div class="post">
 				<?= urldecode($opinion); ?>
 			</div>
+			<?php if($this->session->userdata('admin') || $this->session->userdata('usuario') == $id_usuario): ?>
+			<br>
+			<a class="icon" href="<?=base_url().'index.php/un_post/borrar_post/'.$id?>">🗑️</a>
+			<?php endif; ?>
 			</th>
 		</tr>
 	</table>
@@ -40,6 +44,10 @@
 					<div class="post">
 						<?= $fila->comentario ?>
 					</div>
+					<?php if($this->session->userdata('admin') || $this->session->userdata('usuario') == $fila->id_usuario): ?>
+					<br>
+					<a class="icon" href="<?=base_url().'index.php/un_post/borrar_comentario/'.$fila->id.'/'.$id?>">🗑️</a>
+					<?php endif; ?>
 					</th>
 				</tr>
 			</table>

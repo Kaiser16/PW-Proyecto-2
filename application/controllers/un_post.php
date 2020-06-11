@@ -10,15 +10,17 @@ class Un_post extends CI_Controller{
 
 	public function index() {}
 
-	function arti($id,$img,$op,$titulo,$idusuario)
+	function pst($id)
 	{
 		$this->usuarios_model->verify_connect();
+		$res = $this->posts_model->get_post($id);
+		$post = array_shift($res);
 		$data = array('titulo' => 'Post',
-		'id_usuario' => $idusuario,
-		'id' => $id,
-		'titulo' => $titulo,
-		'imagen' => $img,
-		'opinion' => $op,
+		'id_usuario' => $post->id_usuario,
+		'id' => $post->id,
+		'titulo' => $post->titulo,
+		'imagen' => $post->imagen,
+		'opinion' => $post->opinion,
 		'comentarios' => $this->posts_model->get_post_comments($id)
 		);
 		$this->load->view('topbar_view');
@@ -48,7 +50,25 @@ class Un_post extends CI_Controller{
 		$this->posts_model->add_comment();
 		$res = $this->posts_model->get_post($id_post);
 		$post = array_shift($res);
-		redirect(base_url()."un_post/arti/".$id_post."/".$post->imagen."/".$post->opinion."/".$post->titulo."/".$post->id_usuario);
+		redirect(base_url()."un_post/pst/".$id_post);
+	}
+
+	public function borrar_comentario($id,$id_post)
+	{
+		$this->usuarios_model->verify_connect();
+		$this->comentarios_model->delete_comment($id);
+		redirect(base_url()."un_post/pst/".$id_post);
+	}
+
+	public function borrar_post($id)
+	{
+		$comentarios = $this->posts_model->get_post_comments($id);
+		foreach($comentarios as $comentario)
+		{
+			$this->comentarios_model->delete_comment($comentario->id);
+		}
+		$this->posts_model->delete_post($id);
+		redirect(base_url()."posts");
 	}
 }
 ?>

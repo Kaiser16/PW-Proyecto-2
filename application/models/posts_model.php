@@ -53,5 +53,10 @@ class Posts_model extends CI_Model{
 		$consulta = $this->db->query("select * from entradas where titulo like '%".$titulo."%'");
 		return $consulta->result();
 	}
+
+	public function delete_post($id)
+    {
+        $this->db->delete('entradas',array('id'=>$id));
+    }
 }
 ?>

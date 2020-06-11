@@ -105,3 +105,8 @@ input, textarea{
     border: 1px solid lightgray;
     background-color: #222831;
 }
+
+.icon{
+    text-decoration: none;
+    margin-left: 300;
+}

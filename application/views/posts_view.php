@@ -23,7 +23,7 @@
 			</th>
 			<th>
 				<div class="littleblock" >
-				<p class="littleblock">Titulo: <a href="<?= base_url().'index.php/un_post/arti/',$fila->id.'/'.$fila->imagen.'/'.$fila->opinion.'/'.$fila->titulo.'/'.$fila->id_usuario?>" title="Ver Post"><?= $fila->titulo; ?></a></p>
+				<p class="littleblock">Titulo: <a href="<?= base_url().'index.php/un_post/pst/',$fila->id?>" title="Ver Post"><?= $fila->titulo; ?></a></p>
 				<p class="littleblock">Realizado por: <a href="<?=base_url().'index.php/un_usuario/usu/',$fila->id_usuario?>"><?=$fila->id_usuario?></a></p>
 				</div>
 			</th>
